@@ -1,19 +1,35 @@
-package com.eazybytes.accounts.dto;
+package com.eazybytes.accounts.entity;
 
-import java.util.Objects;
+import jakarta.persistence.*;
 
-public class CustomerDto {
+@Entity
+public class Customer extends BaseEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long customerId;
+    @Column
     private String name;
+    @Column
     private String email;
+    @Column
     private String mobileNumber;
 
-    public CustomerDto() {
-    }
-
-    public CustomerDto(String name, String email, String mobileNumber) {
+    public Customer(Long customerId, String name, String email, String mobileNumber) {
+        this.customerId = customerId;
         this.name = name;
         this.email = email;
         this.mobileNumber = mobileNumber;
+    }
+
+    public Customer() {
+    }
+
+    public Long getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
     }
 
     public String getName() {
@@ -41,22 +57,10 @@ public class CustomerDto {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        CustomerDto that = (CustomerDto) o;
-        return Objects.equals(name, that.name) && Objects.equals(email, that.email) && Objects.equals(mobileNumber, that.mobileNumber);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, email, mobileNumber);
-    }
-
-    @Override
     public String toString() {
-        return "CustomerDto{" +
-                "name='" + name + '\'' +
+        return "Customer{" +
+                "customerId=" + customerId +
+                ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", mobileNumber='" + mobileNumber + '\'' +
                 '}';

@@ -11,12 +11,12 @@ public class Account extends BaseEntity{
     @Column
     private String branchAddress;
     @Column
-    private Integer customerId;
+    private Long customerId;
 
     public Account() {
     }
 
-    public Account(Long accountNumber, String accountType, String branchAddress, Integer customerId) {
+    public Account(Long accountNumber, String accountType, String branchAddress, Long customerId) {
         this.accountNumber = accountNumber;
         this.accountType = accountType;
         this.branchAddress = branchAddress;
@@ -47,11 +47,11 @@ public class Account extends BaseEntity{
         this.branchAddress = branchAddress;
     }
 
-    public Integer getCustomerId() {
+    public Long getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(Integer customerId) {
+    public void setCustomerId(Long customerId) {
         this.customerId = customerId;
     }
 
